@@ -1,0 +1,24 @@
+title: Unusual Windows User Account Created
+id: 749cd194-c690-45df-a8fd-ea8971131505
+status: experimental
+description: >
+  Detects Windows user-account creation events with an unusual target
+  account name consisting only of a dollar sign. This rule is intentionally
+  narrow because the validation dataset contains this abnormal account name.
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.persistence
+  - attack.t1136.001
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4720
+    TargetUserName: '$'
+  condition: selection
+falsepositives:
+  - Specialized account-provisioning software creating unconventional names
+  - Lab or testing activity
+level: medium

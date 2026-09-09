@@ -1,0 +1,48 @@
+title: Network Logon Followed by Scheduled Task Modification
+id: e908a308-1125-48c4-86a9-f73c71130303
+status: experimental
+description: >
+  Detects a successful Windows network logon followed shortly by modification
+  of a scheduled task on the same host. Behavioral validation additionally
+  verifies that the scheduled-task event SubjectLogonId corresponds to the
+  successful logon's TargetLogonId.
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.t1053.005
+correlation:
+  type: temporal_ordered
+  rules:
+    - threatshield_corr003_network_logon
+    - threatshield_corr003_task_updated
+  group-by:
+    - Computer
+  timespan: 1m
+level: high
+---
+title: Successful Network Logon Supporting CORR-003
+id: 83229f73-8503-4d5a-b302-324171130301
+name: threatshield_corr003_network_logon
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4624
+    LogonType: 3
+  condition: selection
+level: low
+---
+title: Scheduled Task Modification Supporting CORR-003
+id: 7190c647-d164-4502-a306-b99371130302
+name: threatshield_corr003_task_updated
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4702
+  condition: selection
+level: low

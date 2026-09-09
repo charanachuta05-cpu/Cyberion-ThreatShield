@@ -1,0 +1,100 @@
+
+==============================================================================
+DET-011 — Windows Security Audit Log Cleared
+==============================================================================
+Dataset: /Users/apple/Cyberion-ThreatShield-Datasets/EVTX-ATTACK-SAMPLES/Defense Evasion/DE_1102_security_log_cleared.evtx
+SHA-256: VERIFIED
+Records: 112
+Event IDs: {'1102': 1, '5156': 1, '4663': 110}
+Matches: 1
+Match: 2019-03-19 23:35:07.524200+00:00 PC01.example.corp EventID=1102
+STATUS: PASS
+
+==============================================================================
+DET-012 — MSHTA Executing HTA Content
+==============================================================================
+Dataset: /Users/apple/Cyberion-ThreatShield-Datasets/EVTX-ATTACK-SAMPLES/Execution/sysmon_mshta_sharpshooter_stageless_meterpreter.evtx
+SHA-256: VERIFIED
+Records: 3
+Event IDs: {'1': 2, '3': 1}
+Matches: 1
+Image: C:\Windows\System32\mshta.exe
+ParentImage: C:\Program Files\Internet Explorer\iexplore.exe
+CommandLine: "C:\Windows\System32\mshta.exe" "C:\Users\IEUser\AppData\Local\Microsoft\Windows\Temporary Internet Files\Content.IE5\S97WTYG7\update.hta"
+STATUS: PASS
+
+==============================================================================
+DET-013 — BITS Transfer Referencing Command Interpreter
+==============================================================================
+Dataset: /Users/apple/Cyberion-ThreatShield-Datasets/EVTX-ATTACK-SAMPLES/Persistence/persist_bitsadmin_Microsoft-Windows-Bits-Client-Operational.evtx
+SHA-256: VERIFIED
+Records: 6
+Event IDs: {'3': 2, '59': 2, '60': 2}
+Matches: 4
+Match: 2019-05-12 18:04:50.121447+00:00 EventID=59 name=backdoor url=C:\Windows\system32\cmd.exe
+Match: 2019-05-12 18:04:50.137072+00:00 EventID=60 name=backdoor url=C:\Windows\system32\cmd.exe
+Match: 2019-05-13 14:50:59.389677+00:00 EventID=59 name=hola url=C:\Windows\system32\cmd.exe
+Match: 2019-05-13 14:50:59.405300+00:00 EventID=60 name=hola url=C:\Windows\system32\cmd.exe
+STATUS: PASS
+
+==============================================================================
+DET-014 — PowerShell CLM Policy Registry Activity
+==============================================================================
+Dataset: /Users/apple/Cyberion-ThreatShield-Datasets/EVTX-ATTACK-SAMPLES/Defense Evasion/DE_Powershell_CLM_Disabled_Sysmon_12.evtx
+SHA-256: VERIFIED
+Records: 1
+Event IDs: {'12': 1}
+Matches: 1
+Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+TargetObject: HKLM\System\CurrentControlSet\Control\SESSION MANAGER\Environment\__PSLockdownPolicy
+RuleName: Defense Evasion - PowerShell CLM Setting Changed
+STATUS: PASS
+
+==============================================================================
+DET-015 — Unusual Windows User Account Created
+==============================================================================
+Dataset: /Users/apple/Cyberion-ThreatShield-Datasets/EVTX-ATTACK-SAMPLES/Defense Evasion/DE_Fake_ComputerAccount_4720.evtx
+SHA-256: VERIFIED
+Records: 2
+Event IDs: {'4720': 2}
+Matches: 2
+Match: 2020-09-16 09:31:19.133272+00:00 Subject=3B\01566S-WIN16-IR$ Target=3B\$
+Match: 2020-09-16 09:32:13.647154+00:00 Subject=3B\01566S-WIN16-IR$ Target=3B\$
+STATUS: PASS
+
+==============================================================================
+CORR-003 — Network Logon Followed by Scheduled Task Modification
+==============================================================================
+Dataset: /Users/apple/Cyberion-ThreatShield-Datasets/EVTX-ATTACK-SAMPLES/Lateral Movement/remote task update 4624 4702 same logonid.evtx
+SHA-256: VERIFIED
+Records: 8
+Event IDs: {'1102': 1, '4624': 6, '4702': 1}
+Qualifying network logons: 6
+Scheduled task updates: 1
+Correlation matches: 1
+
+Source IP: 172.16.66.142
+Target user: a-jbrown
+TargetLogonId: 0x00000000021a8c68
+Logon time: 2020-09-02 11:47:48.570501+00:00
+TaskName: \LMST
+Subject user: a-jbrown
+SubjectLogonId: 0x00000000021a8c68
+Task update time: 2020-09-02 11:47:48.959768+00:00
+Observed delta: 0.389267 seconds
+Configured correlation window: 60 seconds
+Cross-field LogonId linkage: VERIFIED
+Temporal ordering: VERIFIED
+STATUS: PASS
+
+==============================================================================
+BATCH 3 SUMMARY
+==============================================================================
+DET-011: PASS
+DET-012: PASS
+DET-013: PASS
+DET-014: PASS
+DET-015: PASS
+CORR-003: PASS
+
+BATCH STATUS: PASS

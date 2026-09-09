@@ -1,0 +1,31 @@
+title: BITS Transfer Activity Referencing Command Interpreter
+id: a3ed1e73-f218-42cb-a37d-d7ae71131303
+status: experimental
+description: >
+  Detects BITS Client transfer events where the URL field references a
+  Windows command interpreter. Such activity warrants investigation when
+  BITS jobs unexpectedly involve executable command interpreters.
+references:
+  - https://attack.mitre.org/techniques/T1197/
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.t1197
+logsource:
+  product: windows
+  service: bits-client
+detection:
+  selection_event:
+    EventID:
+      - 59
+      - 60
+  selection_url:
+    url|endswith:
+      - '\cmd.exe'
+      - '\powershell.exe'
+      - '\pwsh.exe'
+  condition: selection_event and selection_url
+falsepositives:
+  - Legitimate software deployment or administrative BITS jobs
+  - Enterprise management tools using BITS with approved executables
+level: medium

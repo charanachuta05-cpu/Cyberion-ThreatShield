@@ -1,0 +1,24 @@
+title: PowerShell Constrained Language Mode Policy Registry Activity
+id: f39f1889-8d92-4e19-a294-c2be71131404
+status: experimental
+description: >
+  Detects Sysmon registry activity involving the __PSLockdownPolicy
+  environment value used by PowerShell Constrained Language Mode.
+references:
+  - https://attack.mitre.org/techniques/T1112/
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.t1112
+logsource:
+  category: registry_event
+  product: windows
+detection:
+  selection:
+    EventID: 12
+    TargetObject|endswith: '\__PSLockdownPolicy'
+  condition: selection
+falsepositives:
+  - Authorized PowerShell security-policy configuration
+  - Administrative testing of PowerShell language-mode controls
+level: high
