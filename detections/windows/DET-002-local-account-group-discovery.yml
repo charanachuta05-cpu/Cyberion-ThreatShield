@@ -1,0 +1,27 @@
+title: Windows Local Account or Group Enumeration
+id: 24dc4af5-3cf5-45d8-a8dc-1dd44e6c4202
+status: experimental
+description: >
+  Detects Windows Security events generated when local user membership
+  or local security group membership is enumerated.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.discovery
+  - attack.t1087.001
+  - attack.t1069.001
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID:
+      - 4798
+      - 4799
+  condition: selection
+falsepositives:
+  - Legitimate administrative account or group enumeration
+  - Inventory, identity-management, or security-auditing activity
+level: low

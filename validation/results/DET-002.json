@@ -1,0 +1,47 @@
+{
+  "detection_id": "DET-002",
+  "dataset_id": "DS-002",
+  "dataset_file": "discovery_local_user_or_group_windows_security_4799_4798.evtx",
+  "total_records": 3,
+  "validation_timestamp": "2026-09-09T03:31:20.793382+00:00",
+  "matches": [
+    {
+      "record": 1,
+      "event_id": 4798,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2019-08-05 09:24:56.740217+00:00",
+      "TargetUserName": "Administrator",
+      "TargetDomainName": "MSEDGEWIN10",
+      "TargetSid": "S-1-5-21-3461203602-4096304019-2269080069-500",
+      "SubjectUserName": "IEUser",
+      "SubjectDomainName": "MSEDGEWIN10",
+      "CallerProcessName": "C:\\Windows\\System32\\net1.exe"
+    },
+    {
+      "record": 2,
+      "event_id": 4798,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2019-08-05 09:24:56.774258+00:00",
+      "TargetUserName": "Administrator",
+      "TargetDomainName": "MSEDGEWIN10",
+      "TargetSid": "S-1-5-21-3461203602-4096304019-2269080069-500",
+      "SubjectUserName": "IEUser",
+      "SubjectDomainName": "MSEDGEWIN10",
+      "CallerProcessName": "C:\\Windows\\System32\\net1.exe"
+    },
+    {
+      "record": 3,
+      "event_id": 4799,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2019-08-05 09:25:03.867962+00:00",
+      "TargetUserName": "Administrators",
+      "TargetDomainName": "Builtin",
+      "TargetSid": "S-1-5-32-544",
+      "SubjectUserName": "IEUser",
+      "SubjectDomainName": "MSEDGEWIN10",
+      "CallerProcessName": "C:\\Windows\\System32\\net1.exe"
+    }
+  ],
+  "match_count": 3,
+  "pass": true
+}

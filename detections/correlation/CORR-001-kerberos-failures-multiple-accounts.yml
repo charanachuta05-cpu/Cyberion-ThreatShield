@@ -1,0 +1,45 @@
+title: Kerberos Failures Across Multiple Accounts From One Source
+id: 9de180a3-5760-42e8-9305-7ac53f296201
+status: experimental
+description: >
+  Detects a single source address generating qualifying Kerberos
+  authentication failures across at least five distinct target accounts
+  within ten minutes. This behavior may indicate password spraying and
+  requires analyst validation.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+correlation:
+  type: value_count
+  rules:
+    - threatshield_corr001_kerberos_failures
+  group-by:
+    - IpAddress
+  timespan: 10m
+  condition:
+    field: TargetUserName
+    gte: 5
+falsepositives:
+  - Misconfigured systems repeatedly authenticating with stale credentials
+  - Administrative authentication testing
+  - Identity or authentication infrastructure problems
+level: high
+tags:
+  - attack.credential-access
+  - attack.t1110.003
+---
+title: Kerberos Authentication Failures Supporting CORR-001
+id: 834e5b56-3126-4394-b185-91a359f95731
+name: threatshield_corr001_kerberos_failures
+logsource:
+  product: windows
+  service: security
+detection:
+  selection_4768:
+    EventID: 4768
+    Status: '0x00000006'
+  selection_4771:
+    EventID: 4771
+    Status: '0x00000018'
+  condition: selection_4768 or selection_4771

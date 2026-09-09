@@ -1,0 +1,32 @@
+title: Suspicious Windows Service Installation
+id: a4038d52-f497-465a-95e4-df41b66c2505
+status: experimental
+description: >
+  Detects Windows service installation where the configured service
+  image directly references a command interpreter or other unusual
+  executable observed in the validation telemetry.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.persistence
+  - attack.privilege-escalation
+  - attack.t1543.003
+logsource:
+  product: windows
+  service: system
+detection:
+  selection:
+    EventID: 7045
+    ImagePath|endswith:
+      - '\cmd.exe'
+      - '\powershell.exe'
+      - '\pwsh.exe'
+      - '\calc.exe'
+  condition: selection
+falsepositives:
+  - Legitimate software installation using temporary service wrappers
+  - Authorized administrative service creation
+  - Testing or lab activity
+level: high

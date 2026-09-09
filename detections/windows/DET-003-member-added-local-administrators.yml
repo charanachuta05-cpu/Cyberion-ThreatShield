@@ -1,0 +1,25 @@
+title: Member Added to Windows Local Administrators Group
+id: d559087c-8169-4502-80e8-b6b80fd2c303
+status: experimental
+description: >
+  Detects a member being added to the built-in Windows local
+  Administrators security group.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.persistence
+  - attack.t1098
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4732
+    TargetSid: S-1-5-32-544
+  condition: selection
+falsepositives:
+  - Authorized administrator provisioning
+  - Approved endpoint-management or account-management activity
+level: high

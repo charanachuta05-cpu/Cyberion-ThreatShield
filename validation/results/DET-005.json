@@ -1,0 +1,44 @@
+{
+  "detection_id": "DET-005",
+  "dataset_id": "DS-005",
+  "dataset_file": "LM_Remote_Service02_7045.evtx",
+  "total_records": 3,
+  "validation_timestamp": "2026-09-09T03:31:20.947673+00:00",
+  "matches": [
+    {
+      "record": 1,
+      "event_id": 7045,
+      "provider": "Service Control Manager",
+      "system_time": "2019-03-03 09:20:28.621489+00:00",
+      "ServiceName": "spoolfool",
+      "ImagePath": "cmd.exe",
+      "ServiceType": "user mode service",
+      "StartType": "auto start",
+      "AccountName": "LocalSystem"
+    },
+    {
+      "record": 2,
+      "event_id": 7045,
+      "provider": "Service Control Manager",
+      "system_time": "2019-03-03 09:24:24.699652+00:00",
+      "ServiceName": "spoolsv",
+      "ImagePath": "cmd.exe",
+      "ServiceType": "user mode service",
+      "StartType": "auto start",
+      "AccountName": "LocalSystem"
+    },
+    {
+      "record": 3,
+      "event_id": 7045,
+      "provider": "Service Control Manager",
+      "system_time": "2019-03-19 00:41:29.008934+00:00",
+      "ServiceName": "remotesvc",
+      "ImagePath": "calc.exe",
+      "ServiceType": "user mode service",
+      "StartType": "auto start",
+      "AccountName": "LocalSystem"
+    }
+  ],
+  "match_count": 3,
+  "pass": true
+}

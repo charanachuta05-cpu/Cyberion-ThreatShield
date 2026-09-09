@@ -1,0 +1,148 @@
+{
+  "detection_id": "DET-004",
+  "dataset_id": "DS-004",
+  "dataset_file": "kerberos_pwd_spray_4771.evtx",
+  "total_records": 12,
+  "validation_timestamp": "2026-09-09T03:31:20.907814+00:00",
+  "matches": [
+    {
+      "record": 2,
+      "event_id": 4768,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2020-07-22 20:29:36.414827+00:00",
+      "TargetUserName": "HD01",
+      "TargetDomainName": "THREEBEESCO.COM",
+      "ServiceName": "krbtgt/THREEBEESCO.COM",
+      "Status": "0x00000006",
+      "PreAuthType": "-",
+      "IpAddress": "172.16.66.1",
+      "IpPort": "55961"
+    },
+    {
+      "record": 3,
+      "event_id": 4768,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2020-07-22 20:29:36.414856+00:00",
+      "TargetUserName": "admin",
+      "TargetDomainName": "THREEBEESCO.COM",
+      "ServiceName": "krbtgt/THREEBEESCO.COM",
+      "Status": "0x00000006",
+      "PreAuthType": "-",
+      "IpAddress": "172.16.66.1",
+      "IpPort": "55958"
+    },
+    {
+      "record": 4,
+      "event_id": 4768,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2020-07-22 20:29:36.414928+00:00",
+      "TargetUserName": "svc-02",
+      "TargetDomainName": "THREEBEESCO.COM",
+      "ServiceName": "krbtgt/THREEBEESCO.COM",
+      "Status": "0x00000006",
+      "PreAuthType": "-",
+      "IpAddress": "172.16.66.1",
+      "IpPort": "55963"
+    },
+    {
+      "record": 5,
+      "event_id": 4768,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2020-07-22 20:29:36.414967+00:00",
+      "TargetUserName": "HD02",
+      "TargetDomainName": "THREEBEESCO.COM",
+      "ServiceName": "krbtgt/THREEBEESCO.COM",
+      "Status": "0x00000006",
+      "PreAuthType": "-",
+      "IpAddress": "172.16.66.1",
+      "IpPort": "55962"
+    },
+    {
+      "record": 6,
+      "event_id": 4768,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2020-07-22 20:29:36.414984+00:00",
+      "TargetUserName": "svc-01",
+      "TargetDomainName": "THREEBEESCO.COM",
+      "ServiceName": "krbtgt/THREEBEESCO.COM",
+      "Status": "0x00000006",
+      "PreAuthType": "-",
+      "IpAddress": "172.16.66.1",
+      "IpPort": "55960"
+    },
+    {
+      "record": 7,
+      "event_id": 4768,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2020-07-22 20:29:36.415049+00:00",
+      "TargetUserName": "bob",
+      "TargetDomainName": "THREEBEESCO.COM",
+      "ServiceName": "krbtgt/THREEBEESCO.COM",
+      "Status": "0x00000006",
+      "PreAuthType": "-",
+      "IpAddress": "172.16.66.1",
+      "IpPort": "55957"
+    },
+    {
+      "record": 8,
+      "event_id": 4768,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2020-07-22 20:29:36.415371+00:00",
+      "TargetUserName": "admin02",
+      "TargetDomainName": "THREEBEESCO.COM",
+      "ServiceName": "krbtgt/THREEBEESCO.COM",
+      "Status": "0x00000006",
+      "PreAuthType": "-",
+      "IpAddress": "172.16.66.1",
+      "IpPort": "55966"
+    },
+    {
+      "record": 9,
+      "event_id": 4771,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2020-07-22 20:29:36.425364+00:00",
+      "TargetUserName": "Administrator",
+      "ServiceName": "krbtgt/THREEBEESCO.COM",
+      "Status": "0x00000018",
+      "PreAuthType": "2",
+      "IpAddress": "172.16.66.1",
+      "IpPort": "55967"
+    },
+    {
+      "record": 10,
+      "event_id": 4771,
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "system_time": "2020-07-22 20:29:36.425838+00:00",
+      "TargetUserName": "backdoor",
+      "ServiceName": "krbtgt/THREEBEESCO.COM",
+      "Status": "0x00000018",
+      "PreAuthType": "2",
+      "IpAddress": "172.16.66.1",
+      "IpPort": "55968"
+    }
+  ],
+  "match_count": 9,
+  "correlation_threshold": {
+    "distinct_accounts": 5,
+    "group_by": "IpAddress"
+  },
+  "correlation": [
+    {
+      "source_ip": "172.16.66.1",
+      "distinct_accounts": 9,
+      "accounts": [
+        "Administrator",
+        "HD01",
+        "HD02",
+        "admin",
+        "admin02",
+        "backdoor",
+        "bob",
+        "svc-01",
+        "svc-02"
+      ]
+    }
+  ],
+  "correlation_pass": true,
+  "pass": true
+}
