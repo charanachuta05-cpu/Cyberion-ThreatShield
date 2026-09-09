@@ -1,0 +1,28 @@
+title: Named Pipe Activity by Windows System Process
+id: 8fa8f524-a09d-4f37-b620-92c9a8879009
+status: experimental
+description: >
+  Detects Sysmon named-pipe connection telemetry involving the Windows
+  System process. Unusual pipe names involving System can provide useful
+  evidence during investigation of remote execution or inter-process
+  communication.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.command-and-control
+  - attack.t1559
+logsource:
+  category: pipe_connected
+  product: windows
+detection:
+  selection:
+    EventID: 18
+    Image: System
+  condition: selection
+falsepositives:
+  - Legitimate Windows named-pipe activity
+  - Authorized management software
+  - Security and endpoint-management agents
+level: low

@@ -1,0 +1,45 @@
+========== CYBERION THREATSHIELD ==========
+Correlation Behavioral Validation
+
+========== CORR-001 ==========
+Kerberos Failures Across Multiple Accounts From One Source
+Dataset: kerberos_pwd_spray_4771.evtx
+SHA-256: 4a0a1c7132e216dbc704c806e9429df9ae3ac00485d5238e50c776e3099ae11d
+Hash verified: YES
+Total records: 12
+Qualifying authentication failures: 9
+Correlation matches: 1
+Source IP: 172.16.66.1
+Window start: 2020-07-22T20:29:36.414827+00:00
+Window end:   2020-07-22T20:29:36.425838+00:00
+Observed span: 0:00:00.011011
+Events in window: 9
+Distinct users: 9
+Users: Administrator, HD01, HD02, admin, admin02, backdoor, bob, svc-01, svc-02
+Required threshold: >=5 distinct users
+Configured timespan: 10 minutes
+STATUS: PASS
+
+========== CORR-002 ==========
+Scheduled Task Created Then Rapidly Deleted
+Dataset: temp_scheduled_task_4698_4699.evtx
+SHA-256: a7decf0fbabc340e37de7e7c39fddd5398a7106a4f6acded0ea1d2ffa6bf8b70
+Hash verified: YES
+Total records: 2
+Relevant 4698/4699 records: 2
+Correlation matches: 1
+TaskName: \CYAlyNSS
+SubjectUserName: Administrator
+Created: 2019-03-19T00:02:04.319944+00:00
+Deleted: 2019-03-19T00:02:04.351252+00:00
+Observed delta: 0:00:00.031308
+Configured timespan: 1 minute
+Ordering verified: YES
+Same TaskName verified: YES
+Same SubjectUserName verified: YES
+STATUS: PASS
+
+========== CORRELATION RESULT ==========
+CORR-001: PASS
+CORR-002: PASS
+CORRELATION VALIDATION: PASS

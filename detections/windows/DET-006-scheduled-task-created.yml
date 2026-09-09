@@ -1,0 +1,27 @@
+title: Windows Scheduled Task Created
+id: a7bca0c1-34a6-4b9e-b943-5c2493e6a006
+status: experimental
+description: >
+  Detects creation of a Windows scheduled task through Security Event
+  ID 4698. Scheduled tasks can be used legitimately but can also provide
+  a mechanism for automated execution and persistence.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.execution
+  - attack.persistence
+  - attack.t1053.005
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4698
+  condition: selection
+falsepositives:
+  - Legitimate administrative scheduled tasks
+  - Software installation and update tasks
+  - Endpoint-management automation
+level: low

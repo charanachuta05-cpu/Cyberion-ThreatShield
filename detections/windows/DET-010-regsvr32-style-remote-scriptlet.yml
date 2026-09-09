@@ -1,0 +1,32 @@
+title: Regsvr32-Style Remote Scriptlet Command Line
+id: e710c252-b957-45ac-a453-5e401ef10010
+status: experimental
+description: >
+  Detects process creation containing command-line switches commonly
+  associated with regsvr32 remote scriptlet execution together with an
+  HTTP or HTTPS resource. This can identify renamed copies where
+  filename-only detection would fail.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.t1218.010
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_switches:
+    CommandLine|contains|all:
+      - '/u'
+      - '/s'
+      - '/i:'
+  selection_remote:
+    CommandLine|contains:
+      - 'http://'
+      - 'https://'
+  condition: selection_switches and selection_remote
+falsepositives:
+  - Administrative registration workflows using remote resources
+  - Software deployment or testing reproducing regsvr32-compatible syntax
+level: high

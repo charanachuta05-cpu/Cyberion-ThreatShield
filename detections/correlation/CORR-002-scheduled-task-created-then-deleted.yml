@@ -1,0 +1,64 @@
+title: Scheduled Task Created Then Rapidly Deleted
+id: 67e7750e-c424-42a7-8706-a124587b1002
+status: experimental
+description: >
+  Detects creation of a Windows scheduled task followed by deletion of
+  the same task within one minute. Rapid task creation and removal can
+  warrant investigation because short-lived scheduled tasks may be used
+  for transient execution while reducing persistent artifacts.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.t1053.005
+correlation:
+  type: temporal_ordered
+  rules:
+    - threatshield_corr002_task_created
+    - threatshield_corr002_task_deleted
+  group-by:
+    - TaskName
+    - SubjectUserName
+  timespan: 1m
+falsepositives:
+  - Legitimate administrative automation that creates temporary tasks
+  - Software installation or update workflows
+  - Endpoint-management tooling using short-lived scheduled tasks
+level: medium
+---
+title: Scheduled Task Creation Supporting CORR-002
+id: 219069a1-2020-45cc-a8d8-c54f6a7c2002
+name: threatshield_corr002_task_created
+status: experimental
+description: Supporting rule for CORR-002 identifying Security Event ID 4698.
+author: Cyberion ThreatShield
+date: 2026-09-09
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4698
+  condition: selection
+falsepositives:
+  - Legitimate scheduled-task creation
+level: informational
+---
+title: Scheduled Task Deletion Supporting CORR-002
+id: 3bb6b0a7-970a-46c9-9e9c-82b9144c3002
+name: threatshield_corr002_task_deleted
+status: experimental
+description: Supporting rule for CORR-002 identifying Security Event ID 4699.
+author: Cyberion ThreatShield
+date: 2026-09-09
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4699
+  condition: selection
+falsepositives:
+  - Legitimate scheduled-task deletion
+level: informational

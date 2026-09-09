@@ -1,0 +1,26 @@
+title: Process Spawned by Windows Remote Management Provider Host
+id: c45c4e62-6fc7-45bc-b24a-9144df207007
+status: experimental
+description: >
+  Detects a process whose parent is wsmprovhost.exe. This parent-child
+  relationship can occur when commands are executed through Windows
+  Remote Management or PowerShell remoting.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.lateral-movement
+  - attack.t1021.006
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    ParentImage|endswith: '\wsmprovhost.exe'
+  condition: selection
+falsepositives:
+  - Authorized PowerShell remoting
+  - Legitimate WinRM administration
+  - Configuration-management activity
+level: medium

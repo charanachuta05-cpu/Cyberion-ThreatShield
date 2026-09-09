@@ -1,0 +1,28 @@
+title: Windows WMI Provider Process Creation
+id: d84bf23e-498d-438f-a421-56cf20b1b008
+status: experimental
+description: >
+  Detects creation of the Windows WMI Provider Host process in Windows
+  Security process-creation telemetry. This event can support analysis
+  of WMI-based execution when correlated with nearby authentication
+  and child-process activity.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.execution
+  - attack.t1047
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    EventID: 4688
+    NewProcessName|endswith: '\WmiPrvSE.exe'
+  condition: selection
+falsepositives:
+  - Normal Windows WMI activity
+  - Administrative management operations
+  - Monitoring and endpoint-management software
+level: low
