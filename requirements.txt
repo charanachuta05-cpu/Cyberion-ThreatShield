@@ -2,3 +2,5 @@ pandas
 jupyter
 pyyaml
 sigma-cli
+
+python-evtx

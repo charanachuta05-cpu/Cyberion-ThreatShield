@@ -1,0 +1,23 @@
+{
+  "detection_id": "DET-001",
+  "dataset_id": "DS-001",
+  "dataset_file": "exec_sysmon_1_ftp.evtx",
+  "validation_timestamp_utc": "2026-09-09T02:58:32.685902+00:00",
+  "validation_method": "Local EVTX field evaluation reproducing DET-001 Sigma selection logic",
+  "total_records": 4,
+  "sysmon_process_creation_records": 4,
+  "match_count": 1,
+  "matches": [
+    {
+      "record_number": 3,
+      "event_id": "1",
+      "utc_time": "2019-05-12 17:20:49.261",
+      "user": "IEWIN7\\IEUser",
+      "image": "C:\\Windows\\System32\\cmd.exe",
+      "command_line": "C:\\Windows\\system32\\cmd.exe /C c:\\Windows\\system32\\calc.exe",
+      "parent_image": "C:\\Windows\\System32\\ftp.exe",
+      "parent_command_line": "\"C:\\Windows\\System32\\ftp.exe\" -s:c:\\users\\ieuser\\appdata\\local\\temp\\ftp.txt"
+    }
+  ],
+  "status": "PASS"
+}

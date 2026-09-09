@@ -1,0 +1,31 @@
+title: Suspicious Child Process Spawned by Windows FTP Client
+id: 0c5c8c83-2e18-4e25-9b32-1b19c4d97b01
+status: experimental
+description: >
+  Detects a command interpreter or scripting process spawned by the
+  Windows FTP client. This unusual parent-child relationship may indicate
+  abuse of ftp.exe in an execution chain.
+references:
+  - https://github.com/0xT11/EVTX-ATTACK-SAMPLES
+author: Cyberion ThreatShield
+date: 2026-09-09
+tags:
+  - attack.execution
+  - attack.t1059.003
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_parent:
+    ParentImage|endswith: '\ftp.exe'
+  selection_child:
+    Image|endswith:
+      - '\cmd.exe'
+      - '\powershell.exe'
+      - '\pwsh.exe'
+      - '\wscript.exe'
+      - '\cscript.exe'
+  condition: selection_parent and selection_child
+falsepositives:
+  - Administrative or legacy automation that intentionally launches a command or script interpreter from ftp.exe
+level: medium
