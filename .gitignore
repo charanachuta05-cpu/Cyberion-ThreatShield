@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# macOS / IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Raw datasets - keep large telemetry outside Git
+datasets/raw/*
+!datasets/raw/.gitkeep
+
+# Temporary/generated files
+*.tmp
+*.log
