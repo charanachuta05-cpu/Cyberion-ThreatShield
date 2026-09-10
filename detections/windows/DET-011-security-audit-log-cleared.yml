@@ -8,7 +8,6 @@ references:
   - https://attack.mitre.org/techniques/T1070/001/
 author: Cyberion ThreatShield
 date: 2026-09-09
-tags:
 logsource:
   product: windows
   service: security
