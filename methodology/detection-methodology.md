@@ -25,25 +25,31 @@ Each submitted detection must document:
 
 ## 3. Telemetry Categories
 
-ThreatShield targets three primary telemetry categories:
+ThreatShield's validated baseline uses pre-recorded Windows EVTX telemetry
+across several security-observation categories.
 
-### Windows Security / Sysmon
+### Windows Sysmon Process and System Telemetry
 
-Detection opportunities include process execution, PowerShell,
-authentication, persistence, credential-related activity, and
-remote-service activity.
+Sysmon telemetry supports analysis of process creation, process ancestry,
+registry activity, named-pipe activity, and other endpoint behaviors used by
+the validated detection baseline.
 
-### Network Telemetry
+### Windows Security Authentication Telemetry
 
-Zeek or equivalent network telemetry may support DNS analysis,
-outbound connection analysis, command-and-control patterns,
-suspicious destinations, and network correlation.
+Windows Security events support analysis of Kerberos authentication failures,
+successful network logons, account activity, and source-based authentication
+correlation.
 
-### Authentication Telemetry
+### Windows Security Administrative Telemetry
 
-Authentication telemetry may support detection of failed login
-patterns, successful logons, remote authentication, unusual account
-activity, and credential misuse.
+Windows Security and related Windows event channels support analysis of
+scheduled tasks, account and group changes, audit-log clearing, service
+installation, and other administrative security events.
+
+### Network Context Within Windows Events
+
+The project uses network-related fields embedded in Windows telemetry, such as
+source IP addresses associated with authentication events. It does not claim validation against a separate packet, NetFlow, Zeek, or live network-telemetry dataset.
 
 ## 4. Detection Engineering Workflow
 
