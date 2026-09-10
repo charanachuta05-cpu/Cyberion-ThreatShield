@@ -108,3 +108,70 @@ ThreatShield is an evidence-driven defensive-security engagement based on pre-re
 Detection matches and correlations are investigative signals and are not automatic proof of compromise.
 Dataset-observed artifacts are not treated as confirmed malicious IOCs without supporting attribution evidence.
 The validated baseline does not claim live production monitoring or packet, NetFlow, Zeek, or live network telemetry coverage.
+
+## How to Try Cyberion ThreatShield
+
+Cyberion ThreatShield is a detection-engineering and threat-hunting engagement rather than a web application. Reviewers interact with the project by examining the Sigma analytics, validation evidence, ATT&CK coverage, threat hunts, incident investigations, and response material.
+
+### Quick Start
+
+Clone the repository and create an isolated Python environment:
+
+```bash
+git clone https://github.com/charanachuta05-cpu/Cyberion-ThreatShield.git
+cd Cyberion-ThreatShield
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Run the repository-level verification:
+
+```bash
+python scripts/verify_project.py
+```
+
+The verifier checks the detection inventory, YAML structure, Sigma validation, ATT&CK assessment, threat hunts, incident reports, playbooks, IOC research, methodology, reports, and final presentation.
+
+### Reviewer Paths
+
+**Recruiters and managers**
+
+Start with:
+
+1. `README.md`
+2. `reports/executive-summary.md`
+3. `reports/final-technical-report.md`
+4. `presentation/Cyberion_ThreatShield_Final_Presentation.pptx`
+
+**Detection engineers and SOC analysts**
+
+Start with:
+
+1. `detections/`
+2. `validation/`
+3. `mitre/attack-coverage-matrix.md`
+4. `threat-hunts/`
+5. `incidents/`
+6. `playbooks/`
+
+Sigma rules can also be checked directly:
+
+```bash
+sigma check detections
+```
+
+### Behavioral Validation and Raw Telemetry
+
+The quick-start verifier does not require raw EVTX datasets.
+
+Raw telemetry is intentionally excluded from this Git repository. Existing behavioral-validation utilities under `scripts/` reproduce project detection logic against the datasets used during development when those datasets are available locally.
+
+The committed `validation/` directory provides the corresponding project evidence and results for repository reviewers who do not have the source EVTX files.
+
+### Safety and Analytical Scope
+
+This repository is intended for defensive security analysis, detection engineering, threat hunting, and incident-response education. The quick-start workflow performs repository validation only; it does not execute attacks, malware, exploits, or adversary-emulation procedures.
