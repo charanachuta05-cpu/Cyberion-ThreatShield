@@ -75,4 +75,36 @@ false-positive considerations.
 
 ## Status
 
-Phase 1 - Telemetry Familiarization and Detection Engineering Setup
+Analytical Deliverables Complete - Final QA and Presentation Stage
+
+## Final Project Results
+
+| Area | Completed |
+|---|---:|
+| Atomic Sigma detections | **15** |
+| Correlation analytics | **3** |
+| ATT&CK techniques/sub-techniques assessed | **24** |
+| Direct ATT&CK coverage | **15** |
+| Partial ATT&CK coverage | **1** |
+| Documented ATT&CK gaps | **8** |
+| Threat hunts | **2** |
+| Incident investigations | **2** |
+| Incident-response playbooks | **3** |
+| IOC / behavioral-indicator assessments | **1** |
+
+## Key Project Artifacts
+
+- [MITRE ATT&CK Coverage Matrix](mitre/attack-coverage-matrix.md)
+- [Detection Methodology](methodology/detection-methodology.md)
+- [Data Dictionary](methodology/data-dictionary.md)
+- [Executive Security Assessment](reports/executive-summary.md)
+- [Final Technical Report](reports/final-technical-report.md)
+- [Incident-Response Playbooks](playbooks/)
+- [Validation Evidence](validation/)
+
+## Analytical Boundary
+
+ThreatShield is an evidence-driven defensive-security engagement based on pre-recorded security telemetry.
+Detection matches and correlations are investigative signals and are not automatic proof of compromise.
+Dataset-observed artifacts are not treated as confirmed malicious IOCs without supporting attribution evidence.
+The validated baseline does not claim live production monitoring or packet, NetFlow, Zeek, or live network telemetry coverage.
